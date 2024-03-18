@@ -1,8 +1,7 @@
-"""
-URL configuration for AtmosBlend project.
+"""beatandbase URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,11 +15,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls.static import static
+from django.conf import settings
+from django.conf.urls import handler400
+from admin_category import views
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('user_home/', include('user_home.urls')),
-    path('admin_home/', include('admin_home.urls')),
+    path('', include('user_home.urls')),
+    path('admindj/', admin.site.urls),
     path('user_products/', include('user_products.urls')),
-    path('admin_products/', include('admin_products.urls')),
-]
+    path('admin/', include('admin_home.urls')),
+    path('admin/user_management/', include('user_management.urls')),
+    path('admin/admin_brands/', include('admin_brand.urls')),
+    path('admin/admin_products/', include('admin_products.urls')),
+    path('admin/admin_category/', include('admin_category.urls')),
+    path('admin/admin_variant/', include('admin_variant.urls')),
+    path('admin/ad_banner/', include('ad_banner.urls')),
+    path('cart/', include('cart.urls')),
+    path('user_profile/', include('user_profile.urls')),
+    path('wishlist/', include('wishlist.urls')),
+    path('checkout/', include('checkout.urls')),
+    path('orders/', include('orders.urls')),
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+
+    
+handler400 = views.error_404

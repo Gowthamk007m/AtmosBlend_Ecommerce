@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'checkout',
     'checkout.templatetags',
     'orders',
+    'cart',
        
 ]
 
@@ -66,10 +67,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'AtmosBlend.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,6 +79,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'admin_brand.context.brand_context',
+                'cart.context_processors.cart',
+                'wishlist.context_processors.wishlist',
             ],
         },
     },
