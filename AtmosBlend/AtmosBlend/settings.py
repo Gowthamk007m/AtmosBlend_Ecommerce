@@ -41,6 +41,17 @@ INSTALLED_APPS = [
     'admin_home',
     'user_products',
     'admin_products',
+    'user_management',
+    'admin_brand',
+    'admin_category',
+    'ad_banner',
+    'user_profile',
+    'admin_variant',
+    'wishlist',
+    'checkout',
+    'checkout.templatetags',
+    'orders',
+       
 ]
 
 MIDDLEWARE = [
